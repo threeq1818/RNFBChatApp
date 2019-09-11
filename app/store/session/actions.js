@@ -52,3 +52,18 @@ export const signupUser = (email, password) => {
       })
   }
 }
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    dispatch(sessionLoading())
+
+    firebaseService.auth()
+      .signOut()
+      .then(() => {
+        dispatch(sessionLogout())
+      })
+      .catch(error => {
+        dispatch(sessionError(error.message))
+      })
+  }
+}
