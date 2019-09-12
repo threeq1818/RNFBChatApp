@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import AuthScreenComponent from './Component'
 
 const AuthScreenContainer = props =>
-  <AuthScreenContainer
+  <AuthScreenComponent
     loading={props.loading}
     error={props.error} />
 
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
   error: state.session.error,
 })
 
-AuthScreenContainer.PropTypes = {
+AuthScreenContainer.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 }

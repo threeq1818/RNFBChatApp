@@ -9,15 +9,16 @@ import AuthScreen from '../AuthScreen';
 import styles from './Styles';
 
 const ChatAppComponent = props => {
-  if (props.restoring) {
-    return <ActivityIndicator style={styles.activityIndicator} />;
-  } else {
-    if (props.logged) {
-      return <DashboardNavigator />;
-    } else {
-      return <AuthScreen />;
-    }
-  }
+  return <ActivityIndicator style={styles.activityIndicator} />;
+  // if (props.restoring) {
+  //   return <ActivityIndicator style={styles.activityIndicator} />;
+  // } else {
+  //   if (props.logged) {
+  //     return <DashboardNavigator />;
+  //   } else {
+  //     return <AuthScreen />;
+  //   }
+  // }
 };
 
 ChatAppComponent.propTypes = {

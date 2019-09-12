@@ -1,19 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TouchableOpacity, Image } from 'react-native'
+import { connect } from 'react-redux'
 
-import styles from './Styles'
+import { logoutUser } from '../../../../store/session'
 
-const LogoutButtonComponent = props =>
-  <TouchableOpacity
-    style={styles.container}
-    onPress={props.logout}>
+import LogoutButton from './Component'
 
-    <Image source={require('../../../../images/ic_exit_to_app.png')} />
-  </TouchableOpacity>
+const LogoutButtonContainer = props =>
+  <LogoutButton logout={props.logout} />
 
-LogoutButtonComponent.propTypes = {
+const mapDispatchToProps = {
+  logout: logoutUser
+}
+
+LogoutButtonContainer.propTypes = {
   logout: PropTypes.func.isRequired
 }
 
-export default LogoutButtonComponent
+export default connect(null, mapDispatchToProps)(LogoutButtonContainer)
