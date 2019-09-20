@@ -25,7 +25,7 @@ class MessageFormComponent extends Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.sendingError && this.props.sendingError) {
-      debugger
+      // debugger
       Alert.alert(translations.t('error'), this.props.sendingError)
     }
   }
