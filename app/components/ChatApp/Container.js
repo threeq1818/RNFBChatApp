@@ -8,38 +8,37 @@ import ChatAppComponent from './Component';
 
 class ChatAppContainer extends Component {
   componentDidMount() {
-    // this.props.restore();
+    this.props.restore();
   }
 
   render() {
-    debugger
+    // debugger
     return (
-      <ActivityIndicator style={styles.activityIndicator} />
-      // <ChatAppComponent
-      //   restoring={this.props.restoring}
-      //   logged={this.props.logged}
-      // />
+      <ChatAppComponent
+        restoring={this.props.restoring}
+        logged={this.props.logged}
+      />
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   restoring: state.session.restoring,
-//   logged: state.session.user != null,
-// });
+const mapStateToProps = state => ({
+  restoring: state.session.restoring,
+  logged: state.session.user != null,
+});
 
-// const mapDispatchToProps = {
-//   restore: restoreSession,
-// };
+const mapDispatchToProps = {
+  restore: restoreSession,
+};
 
-// ChatAppContainer.propTypes = {
-//   restoring: PropTypes.bool.isRequired,
-//   logged: PropTypes.bool.isRequired,
-//   restore: PropTypes.func.isRequired,
-// };
+ChatAppContainer.propTypes = {
+  restoring: PropTypes.bool.isRequired,
+  logged: PropTypes.bool.isRequired,
+  restore: PropTypes.func.isRequired,
+};
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// )(ChatAppContainer);
-export default ChatAppContainer
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChatAppContainer);
+// export default ChatAppContainer

@@ -1,3 +1,9 @@
+import * as types from './actionTypes'
+import firebaseService from '../../services/firebase'
+
+const FIREBASE_REF_MESSAGES = firebaseService.database().ref('Messages')
+const FIREBASE_REF_MESSAGES_LIMIT = 20
+
 export const loadMessages = () => {
   return (dispatch) => {
     FIREBASE_REF_MESSAGES.limitToLast(FIREBASE_REF_MESSAGES_LIMIT).on('value', (snapshot) => {
@@ -15,6 +21,7 @@ export const updateMessage = text => {
 }
 
 export const sendMessage = message => {
+  debugger
   return (dispatch) => {
     dispatch(chatMessageLoading())
 
@@ -38,3 +45,31 @@ export const sendMessage = message => {
     })
   }
 }
+
+const chatMessageLoading = () => ({
+  type: types.CHAT_MESSAGE_LOADING
+})
+
+const chatMessageSuccess = () => ({
+  type: types.CHAT_MESSAGE_SUCCESS
+})
+
+const chatMessageError = error => ({
+  type: types.CHAT_MESSAGE_ERROR,
+  error
+})
+
+const chatUpdateMessage = text => ({
+  type: types.CHAT_MESSAGE_UPDATE,
+  text
+})
+
+const loadMessagesSuccess = messages => ({
+  type: types.CHAT_LOAD_MESSAGES_SUCCESS,
+  messages
+})
+
+const loadMessagesError = error => ({
+  type: types.CHAT_LOAD_MESSAGES_ERROR,
+  error
+})

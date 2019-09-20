@@ -1,5 +1,7 @@
 // eslint-disable-next-line prettier/prettier
-import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
@@ -29,4 +31,4 @@ const tabBarOptions = {
   tabBarPosition: 'bottom'
 };
 
-export default createMaterialTopTabNavigator(routeConfigs, tabBarOptions);
+export default createAppContainer(createBottomTabNavigator(routeConfigs, tabBarOptions));

@@ -8,9 +8,9 @@ import ChatApp from './components/ChatApp'
 const store = configureStore()
 
 const App = () =>
-  <Text style={{ fontSize: 20 }}>React.Component</Text>
-// <Provider store={store}>
-//   <ChatApp />
-// </Provider>
+  // <Text style={{ fontSize: 20 }}>React.Component</Text>
+  <Provider store={store}>
+    <ChatApp />
+  </Provider>
 
 export default App

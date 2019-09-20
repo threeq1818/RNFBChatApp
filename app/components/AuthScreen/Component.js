@@ -17,7 +17,8 @@ class AuthScreenComponent extends Component {
     }
   }
 
-  return() {
+  render() {
+    // debugger
     return (
       <View style={styles.container}>
         <AuthTabs />

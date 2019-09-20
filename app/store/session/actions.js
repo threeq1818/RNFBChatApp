@@ -1,3 +1,6 @@
+import * as types from './actionTypes'
+import firebaseService from '../../services/firebase'
+
 export const restoreSession = () => {
   return (dispatch) => {
     dispatch(sessionRestoring());
@@ -18,7 +21,7 @@ export const restoreSession = () => {
 export const loginUser = (email, password) => {
   return (dispatch) => {
     dispatch(sessionLoading())
-
+    // debugger
     firebaseService.auth()
       .signInWithEmailAndPassword(email, password)
       .catch(error => {
@@ -67,3 +70,25 @@ export const logoutUser = () => {
       })
   }
 }
+
+const sessionRestoring = () => ({
+  type: types.SESSION_RESTORING
+})
+
+const sessionLoading = () => ({
+  type: types.SESSION_LOADING
+})
+
+const sessionSuccess = user => ({
+  type: types.SESSION_SUCCESS,
+  user
+})
+
+const sessionError = error => ({
+  type: types.SESSION_ERROR,
+  error
+})
+
+const sessionLogout = () => ({
+  type: types.SESSION_LOGOUT
+})
