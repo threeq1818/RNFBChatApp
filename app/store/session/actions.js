@@ -25,7 +25,7 @@ export const loginUser = (email, password) => {
     firebaseService.auth()
       .signInWithEmailAndPassword(email, password)
       .catch(error => {
-        dispatch(sessionError(erro.message))
+        dispatch(sessionError(error.message))
       })
 
     let unsubscribe = firebaseService.auth()
